@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Event</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 4px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        input, textarea {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .btn {
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #FF6B6B, #4ECDC4);
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Event</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="id_name">Name</label>
+            {{ form.name }}
+            
+            <label for="id_date">Date</label>
+            {{ form.date }}
+            
+            <label for="id_description">Description</label>
+            {{ form.description }}
+            
+            <button type="submit" class="btn btn-primary">ADD EVENT</button>
+        </form>
+        <a href="{% url 'event_list' %}" class="btn btn-secondary">BACK TO EVENT LIST</a>
+    </div>
+</body>
+</html>

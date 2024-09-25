@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Event</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ... (use the same styles as in add_event.html) ... */
+        .warning {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Event</h1>
+        <div class="warning">
+            Are you sure you want to delete the event "{{ event.name }}"?
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">CONFIRM DELETE</button>
+        </form>
+        <a href="{% url 'event_list' %}" class="btn btn-secondary">CANCEL</a>
+    </div>
+</body>
+</html>
